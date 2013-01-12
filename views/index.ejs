@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title><%= title %></title>
+  <link rel='stylesheet' href='/stylesheets/style.css' />
+</head>
+<body>
+  <h1><%= title %></h1>
+  <% todos.forEach(function(todo){%>
+  <p>
+    <span>
+      <%= todo.content %>
+      <i><%= (todo.owner || {name:'No Owner'}).name %></i>
+    </span>
+    <span>
+      <a href="/destroy/<%= todo._id %>" title="Delete this todo item">Delete</a>
+    </span>
+  </p>
+  <%});%>
+
+  <form action="/create" method="post" accept-charset="utf-8">
+    <input type="text" name="content" />
+    <input type="submit" value="enviar">
+  </form>
+</body>
+</html>
